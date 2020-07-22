@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <splitpanes class="default-theme" style="height: 800px">
+      <Pane size="20">
+        <Tools />
+      </Pane>
+      <Pane size="60">
+        <Main @itemClick="onItemClick" />
+      </Pane>
+      <Pane size="20">
+        <Att :item="item" />
+      </Pane>
+    </splitpanes>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { Splitpanes, Pane } from "splitpanes";
+import "splitpanes/dist/splitpanes.css";
+import Tools from "./components/Tools";
+import Att from "./components/Att";
+import Main from "./components/Main";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Splitpanes,
+    Pane,
+    Tools,
+    Att,
+    Main
+  },
+  data() {
+    return { item: {} };
+  },
+  methods: {
+    onItemClick(item) {
+      console.log("item", item);
+      this.item = item;
+    }
   }
 };
 </script>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="less" scoped></style>
