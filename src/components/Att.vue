@@ -26,7 +26,8 @@ export default {
     FormItem: Form.Item
   },
   props: {
-    item: {}
+    item: {},
+    updateCb: null
   },
   beforeUpdate() {
     console.log(">>>>>");
@@ -34,6 +35,9 @@ export default {
   methods: {
     changeHandle(e, key) {
       console.log(e.target.value, key);
+      console.log(this.item);
+      this.item[key] = e.target.value;
+      // this.updateCb && this.updateCb(this.item);
     }
   }
 };

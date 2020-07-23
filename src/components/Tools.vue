@@ -34,36 +34,47 @@ export default {
   data: function() {
     return {
       formItems: [
-        { type: "input", id: "input", taglbl: "input", span: 24 },
-        { type: "select", id: "select", taglbl: "select", span: 24 },
-        { type: "radio", id: "radio", taglbl: "radio", span: 24 },
-        { type: "number", id: "number", taglbl: "number", span: 24 },
+        { type: "input", id: "input", taglbl: "input", span: 12 },
+        { type: "select", id: "select", taglbl: "select", span: 12 },
+        { type: "radio", id: "radio", taglbl: "radio", span: 12 },
+        { type: "number", id: "number", taglbl: "number", span: 12 },
         {
           type: "textarea",
           id: "textarea",
           taglbl: "textarea",
-          span: 24
+          span: 12
         },
-        { type: "switch", id: "switch", taglbl: "switch", span: 24 },
+        { type: "switch", id: "switch", taglbl: "switch", span: 12 },
         {
           type: "checkbox",
           id: "checkbox",
           taglbl: "checkbox",
-          span: 24
+          span: 12
         },
         {
           type: "button",
           id: "button",
           taglbl: "button",
-          span: 24
+          span: 12
+        },
+        {
+          type: "space",
+          id: "space",
+          taglbl: "space",
+          span: 12
         }
       ]
     };
   },
   methods: {
     cloneElement(element) {
-      const { id } = element;
-      return { ...element, id: id + uuidv4(), label: "" };
+      const { id, taglbl, type, ...otherAtt } = element;
+      console.log(taglbl);
+      let label = "文本";
+      if (type === "button" || type === "space") {
+        label = "按钮";
+      }
+      return { ...otherAtt, type, id: id + uuidv4(), label };
     }
   },
   computed: {

@@ -4,11 +4,8 @@
       <Pane size="20">
         <Tools />
       </Pane>
-      <Pane size="60">
+      <Pane size="80">
         <Main @itemClick="onItemClick" />
-      </Pane>
-      <Pane size="20">
-        <Att :item="item" />
       </Pane>
     </splitpanes>
   </div>
@@ -18,7 +15,6 @@
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import Tools from "./components/Tools";
-import Att from "./components/Att";
 import Main from "./components/Main";
 
 export default {
@@ -27,7 +23,6 @@ export default {
     Splitpanes,
     Pane,
     Tools,
-    Att,
     Main
   },
   data() {
