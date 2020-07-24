@@ -1,6 +1,6 @@
 <template>
-  <splitpanes>
-    <Pane size="80">
+  <splitpanes class="default-theme">
+    <Pane size="60">
       <Panel title="编辑区">
         <Form>
           <Row style="padding-right:10px">
@@ -41,12 +41,18 @@
             </draggable>
           </Row>
         </Form>
-        <AntSwitch></AntSwitch>
       </Panel>
     </Pane>
 
-    <Pane size="20">
-      <Att :item="selectedItem" />
+    <Pane size="40" style="height: 830px">
+      <splitpanes horizontal>
+        <Pane size="50">
+          <Tools :item="selectedItem" />
+        </Pane>
+        <Pane size="50">
+          <Att :item="selectedItem" />
+        </Pane>
+      </splitpanes>
     </Pane>
   </splitpanes>
 </template>
@@ -55,7 +61,10 @@
 import Panel from "./Panel";
 import draggable from "vuedraggable";
 import { Splitpanes, Pane } from "splitpanes";
+import "splitpanes/dist/splitpanes.css";
+
 import Att from "./Att";
+import Tools from "./Tools";
 
 import {
   Input,
@@ -73,6 +82,7 @@ import {
 export default {
   name: "Main",
   components: {
+    Tools,
     Att,
     Splitpanes,
     Pane,
