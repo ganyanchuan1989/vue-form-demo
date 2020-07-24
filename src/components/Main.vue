@@ -2,7 +2,7 @@
   <splitpanes>
     <Pane size="80">
       <Panel title="编辑区">
-        <Form :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+        <Form>
           <Row style="padding-right:10px">
             <draggable
               v-bind="dragOptions"
@@ -17,6 +17,7 @@
                   :span="item.span ? item.span : 12"
                 >
                   <FormItem
+                    class="custom-form-item"
                     :label="item.type !== 'button' ? item.label : ' '"
                     :colon="item.type === 'button' ? false : true"
                   >
@@ -115,7 +116,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 .dragArea {
   height: 800px;
 }
@@ -142,5 +143,14 @@ export default {
 }
 .list-group-item i {
   cursor: pointer;
+}
+.custom-form-item {
+  display: flex;
+  .ant-form-item-label {
+    width: 140px !important;
+  }
+  .ant-form-item-control-wrapper {
+    flex: 1;
+  }
 }
 </style>
