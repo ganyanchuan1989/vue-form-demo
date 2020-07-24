@@ -1,4 +1,8 @@
-# vue-form-demo
+# vue-dynamic-form
+
+动态表单
+
+![](./ooxx4-dqdk4.gif)
 
 ## Project setup
 ```
