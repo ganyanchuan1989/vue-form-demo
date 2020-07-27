@@ -81,7 +81,7 @@ export default {
       const { related, draggedContext } = evt;
       const { element } = draggedContext;
       const relatedCls = related.getAttribute("class");
-      console.log(element.type === "button" && relatedCls === "dragArea");
+      console.log(relatedCls);
       if (element.type === "button" && relatedCls === "dragArea") {
         return false;
       }

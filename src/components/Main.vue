@@ -18,9 +18,11 @@
                 >
                   <FormItem
                     class="custom-form-item"
-                    :label="item.type !== 'button' ? item.label : ' '"
                     :colon="item.type === 'button' ? false : true"
                   >
+                    <div slot="label" class="form-item-label">
+                      {{ item.label }}
+                    </div>
                     <Input v-if="item.type === 'input'" />
                     <InputNumber v-if="item.type === 'number'" />
                     <TextArea v-if="item.type === 'textarea'" />
@@ -176,7 +178,13 @@ export default {
   height: 400px;
   background: blue;
 }
-
+.form-item-label {
+  display: inline-block;
+  white-space: break-spaces;
+  word-break: break-all;
+  line-height: 20px;
+  width: 100px;
+}
 .button {
   margin-top: 35px;
 }
