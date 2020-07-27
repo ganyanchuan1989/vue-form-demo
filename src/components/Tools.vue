@@ -78,13 +78,13 @@ export default {
       return { ...otherAtt, type, id: id + uuidv4(), label };
     },
     moveHandle(evt) {
-      const { related, draggedContext } = evt;
-      const { element } = draggedContext;
-      const relatedCls = related.getAttribute("class");
-      console.log(relatedCls);
-      if (element.type === "button" && relatedCls === "dragArea") {
-        return false;
-      }
+      // const { related, draggedContext } = evt;
+      // const { element } = draggedContext;
+      // const relatedCls = related.getAttribute("class");
+      console.log(evt);
+      // if (element.type === "button" && relatedCls === "dragArea") {
+      //   return false;
+      // }
     }
   },
   computed: {
