@@ -39,6 +39,43 @@
                 </AntCol>
               </template>
             </draggable>
+
+            <draggable
+              v-bind="dragOptions"
+              :list="formItems2"
+              class="dragArea2"
+              group="myfrom"
+              :move="moveHandle2"
+            >
+              <template v-for="item in formItems2">
+                <AntCol
+                  :key="item.id"
+                  @click="clickHandle(item)"
+                  :span="item.span ? item.span : 12"
+                >
+                  <FormItem
+                    class="custom-form-item"
+                    :label="item.type !== 'button' ? item.label : ' '"
+                    :colon="item.type === 'button' ? false : true"
+                  >
+                    <Input v-if="item.type === 'input'" />
+                    <InputNumber v-if="item.type === 'number'" />
+                    <TextArea v-if="item.type === 'textarea'" />
+                    <Checkbox v-if="item.type === 'checkbox'" />
+                    <Select v-if="item.type === 'select'" />
+                    <Radio v-if="item.type === 'radio'" />
+                    <AntSwitch v-if="item.type === 'switch'" />
+                    <Button v-if="item.type === 'button'">{{
+                      item.label ? item.label : "文本"
+                    }}</Button>
+                    <div
+                      v-if="item.type === 'space'"
+                      style="height: 30px"
+                    ></div>
+                  </FormItem>
+                </AntCol>
+              </template>
+            </draggable>
           </Row>
         </Form>
       </Panel>
@@ -104,6 +141,7 @@ export default {
   data() {
     return {
       formItems: [],
+      formItems2: [],
       selectedItem: {}
     };
   },
@@ -111,6 +149,10 @@ export default {
     clickHandle(item) {
       // this.$emit("itemClick", item);
       this.selectedItem = item;
+    },
+    moveHandle2(evt) {
+      console.log("evt", evt);
+      return false;
     }
   },
   computed: {
@@ -128,7 +170,11 @@ export default {
 
 <style lang="less">
 .dragArea {
-  height: 800px;
+  height: 400px;
+}
+.dragArea2 {
+  height: 400px;
+  background: blue;
 }
 
 .button {

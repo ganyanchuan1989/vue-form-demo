@@ -8,6 +8,7 @@
           :list="formItems"
           :group="{ name: 'myfrom', pull: 'clone', put: false }"
           :clone="cloneElement"
+          :move="moveHandle"
         >
           <div class="tool-item" v-for="item in formItems" :key="item.id">
             <Icon type="chrome" style="font-size:50px" />{{ item.taglbl }}
@@ -75,6 +76,15 @@ export default {
         label = "按钮";
       }
       return { ...otherAtt, type, id: id + uuidv4(), label };
+    },
+    moveHandle(evt) {
+      const { related, draggedContext } = evt;
+      const { element } = draggedContext;
+      const relatedCls = related.getAttribute("class");
+      console.log(element.type === "button" && relatedCls === "dragArea");
+      if (element.type === "button" && relatedCls === "dragArea") {
+        return false;
+      }
     }
   },
   computed: {

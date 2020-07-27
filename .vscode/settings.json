@@ -8,5 +8,6 @@
     "javascriptreact",
     "vue"
   ],
-  "vetur.validation.template": false
+  "vetur.validation.template": false,
+  "liveServer.settings.port": 5501
 }
